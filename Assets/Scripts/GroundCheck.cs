@@ -5,19 +5,13 @@ public class GroundCheck : MonoBehaviour
     private static readonly int Jump = Animator.StringToHash("Jump");
     public PlayerMovementConfig movementConfig;
     
-    [SerializeField] Animator jumpAnimator;
-
     private bool _isGrounded;
     private float _verticalVelocity;
     private float _jumpTimer;
 
     public bool IsGrounded => _isGrounded;
     public float VerticalVelocity => _verticalVelocity;
-
-    public void Awake()
-    {
-        jumpAnimator = GetComponent<Animator>();
-    }
+    
     private void Update()
     {
         CheckGround();
@@ -40,7 +34,6 @@ public class GroundCheck : MonoBehaviour
     {
         if (_isGrounded && Input.GetButtonDown("Jump"))
         {
-            jumpAnimator.SetTrigger(Jump);
             _verticalVelocity = movementConfig.baseJumpForce;
             _jumpTimer = 0f;
         }

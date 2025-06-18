@@ -388,7 +388,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5a37e799e61614045be25ff78d03b862, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.888
+      value: 0.85
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5a37e799e61614045be25ff78d03b862, type: 3}
       propertyPath: m_LocalPosition.z
@@ -474,7 +474,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 762383837}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 42e975c5ffc18e5439350fcfc95ffe31, type: 3}
+  m_Avatar: {fileID: 9000000, guid: ac55f9f32ff1806478e066002367b2ff, type: 3}
   m_Controller: {fileID: 9100000, guid: 29758b673c92d5e49b08af92def968cf, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -499,10 +499,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d79725220829041b12a9bcf0741e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 762383838}
   movementConfig: {fileID: 11400000, guid: e5b5ae510c2071842843c233e1755cd7, type: 2}
   groundCheck: {fileID: 1336740994}
   cameraHolder: {fileID: 780082525}
-  playerAnimator: {fileID: 5866666021909216657, guid: 42e975c5ffc18e5439350fcfc95ffe31, type: 3}
 --- !u!143 &762383840
 CharacterController:
   m_ObjectHideFlags: 0
@@ -527,7 +527,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &762383841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -786,7 +786,7 @@ MonoBehaviour:
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
   TargetOffset: {x: 0, y: 0, z: 0}
-  Damping: {x: 0.5, y: 0.5}
+  Damping: {x: 0.25, y: 0.25}
   Lookahead:
     Enabled: 0
     Time: 0
@@ -871,7 +871,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1336740995}
   - component: {fileID: 1336740994}
-  - component: {fileID: 1336740996}
   m_Layer: 0
   m_Name: groundCheck
   m_TagString: Untagged
@@ -892,7 +891,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementConfig: {fileID: 11400000, guid: e5b5ae510c2071842843c233e1755cd7, type: 2}
-  jumpAnimator: {fileID: 5866666021909216657, guid: c6c33cb4d3c8703489ffc9b230fdfa6c, type: 3}
 --- !u!4 &1336740995
 Transform:
   m_ObjectHideFlags: 0
@@ -902,34 +900,12 @@ Transform:
   m_GameObject: {fileID: 1336740993}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.02, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 762383842}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1336740996
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1336740993}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 42e975c5ffc18e5439350fcfc95ffe31, type: 3}
-  m_Controller: {fileID: 9100000, guid: 29758b673c92d5e49b08af92def968cf, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1453678327
 GameObject:
   m_ObjectHideFlags: 0
@@ -1121,7 +1097,7 @@ Transform:
   m_GameObject: {fileID: 1453678327}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8, y: 3.1880002, z: -1.5}
+  m_LocalPosition: {x: 0.6, y: 2.6999998, z: -1.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1230,7 +1206,7 @@ Transform:
   m_GameObject: {fileID: 1739668263}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.8, y: 0.79999995, z: -1.5}
+  m_LocalPosition: {x: 0.6, y: 0.3499999, z: -1.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1267,8 +1243,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0.1, y: 0.5, z: 0.3}
-  ShoulderOffset: {x: 0.8, y: -0.4, z: 0.5}
-  VerticalArmLength: 1.2
+  ShoulderOffset: {x: 0.6, y: -0.4, z: 0.4}
+  VerticalArmLength: 0.75
   CameraSide: 1
   CameraDistance: 2
   AvoidObstacles:

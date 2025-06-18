@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerMovementConfig : ScriptableObject
 {
     public float targetMoveSpeed = 5f;
+    public float chargingMoveSpeed = 2f;
     public float runSpeed = 10f;
 
     public float accelerationRate = 10f;

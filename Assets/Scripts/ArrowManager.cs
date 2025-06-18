@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ArrowManager : MonoBehaviour
 {
-    [SerializeField] private int maxArrowCount = 10;
+    [SerializeField] private int maxArrowCount = 20;
 
     private Queue<GameObject> _arrows = new Queue<GameObject>();
 

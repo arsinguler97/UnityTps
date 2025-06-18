@@ -37,9 +37,14 @@ public class Arrow : MonoBehaviour
             transform.SetParent(other.transform);
         }
 
+        if (other.TryGetComponent<EnemyPatrol>(out var enemy))
+        {
+            enemy.TakeDamage(1);
+        }
+
         this.enabled = false;
     }
-    
+
     public void SetInitialSpeed(float speed)
     {
         _initialSpeed = speed;
