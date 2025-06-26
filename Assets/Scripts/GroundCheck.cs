@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class GroundCheck : MonoBehaviour
 {
-    private static readonly int Jump = Animator.StringToHash("Jump");
     public PlayerMovementConfig movementConfig;
     
     private bool _isGrounded;

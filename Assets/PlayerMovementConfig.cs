@@ -6,6 +6,7 @@ public class PlayerMovementConfig : ScriptableObject
     public float targetMoveSpeed = 5f;
     public float chargingMoveSpeed = 2f;
     public float runSpeed = 10f;
+    public float rotationSpeed = 10f;
 
     public float accelerationRate = 10f;
     public float decelerationRate = 15f;

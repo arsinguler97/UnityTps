@@ -15,12 +15,13 @@ MonoBehaviour:
   targetMoveSpeed: 5
   chargingMoveSpeed: 2.5
   runSpeed: 10
+  rotationSpeed: 100
   accelerationRate: 10
   decelerationRate: 15
-  baseJumpForce: 8
+  baseJumpForce: 10
   maxJumpHoldTime: 0.5
   gravityMultiplier: 2
   airControlFactor: 0.5
   lookSensitivity: 2
   groundCheckDistance: 0.25
-  groundCheckHeight: 0.15
+  groundCheckHeight: 0.2
