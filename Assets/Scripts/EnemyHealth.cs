@@ -1,15 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyPatrol : MonoBehaviour
+public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] private float speed = 2f;
-    [SerializeField] private float moveDistance = 3f;
     [SerializeField] private int maxHealth = 3;
     [SerializeField] private GameObject healthBarPrefab;
-
-    private Vector3 _startPosition;
-    private int _direction = 1;
+    
     private int _currentHealth;
 
     private Slider _healthBarSlider;
@@ -17,7 +13,6 @@ public class EnemyPatrol : MonoBehaviour
 
     private void Start()
     {
-        _startPosition = transform.position;
         _currentHealth = maxHealth;
 
         if (healthBarPrefab != null)
@@ -27,17 +22,6 @@ public class EnemyPatrol : MonoBehaviour
             _healthBarSlider = _healthBarInstance.GetComponentInChildren<Slider>();
             _healthBarSlider.maxValue = maxHealth;
             _healthBarSlider.value = maxHealth;
-        }
-    }
-
-    private void Update()
-    {
-        transform.Translate(Vector3.right * (_direction * speed * Time.deltaTime));
-
-        float distanceFromStart = Vector3.Distance(transform.position, _startPosition);
-        if (distanceFromStart >= moveDistance)
-        {
-            _direction *= -1;
         }
     }
 

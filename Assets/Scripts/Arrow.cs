@@ -37,7 +37,7 @@ public class Arrow : MonoBehaviour
             transform.SetParent(other.transform);
         }
 
-        if (other.TryGetComponent<EnemyPatrol>(out var enemy))
+        if (other.TryGetComponent<EnemyHealth>(out var enemy))
         {
             enemy.TakeDamage(1);
         }
