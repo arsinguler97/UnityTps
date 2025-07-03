@@ -3,22 +3,14 @@ using UnityEngine;
 public class GroundCheck : MonoBehaviour
 {
     public PlayerMovementConfig movementConfig;
-    
+
     private bool _isGrounded;
     private float _verticalVelocity;
-    private float _jumpTimer;
 
     public bool IsGrounded => _isGrounded;
     public float VerticalVelocity => _verticalVelocity;
-    
-    private void Update()
-    {
-        CheckGround();
-        HandleJump();
-        ApplyGravity();
-    }
 
-    private void CheckGround()
+    private void Update()
     {
         Vector3 boxCenter = transform.position;
         Vector3 boxHalfExtents = new Vector3(movementConfig.groundCheckDistance, movementConfig.groundCheckHeight, movementConfig.groundCheckDistance);
@@ -26,34 +18,18 @@ public class GroundCheck : MonoBehaviour
         _isGrounded = Physics.CheckBox(boxCenter, boxHalfExtents, Quaternion.identity, LayerMask.GetMask("Ground"));
 
         if (_isGrounded && _verticalVelocity < 0)
-            _verticalVelocity = -2f;
-    }
+            _verticalVelocity = 0f;
 
-    private void HandleJump()
-    {
-        if (_isGrounded && Input.GetButtonDown("Jump"))
-        {
-            _verticalVelocity = movementConfig.baseJumpForce;
-            _jumpTimer = 0f;
-        }
-
-        if (Input.GetButton("Jump") && _jumpTimer < movementConfig.maxJumpHoldTime)
-        {
-            _verticalVelocity += movementConfig.baseJumpForce * Time.deltaTime;
-            _jumpTimer += Time.deltaTime;
-        }
-
-        if (Input.GetButtonUp("Jump"))
-        {
-            _jumpTimer = movementConfig.maxJumpHoldTime;
-        }
-    }
-
-    private void ApplyGravity()
-    {
         _verticalVelocity += Physics.gravity.y * movementConfig.gravityMultiplier * Time.deltaTime;
+        
+        Debug.Log(_verticalVelocity);
     }
 
+    public void ApplyJumpForce()
+    {
+        _verticalVelocity = movementConfig.baseJumpForce;
+    }
+    
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;

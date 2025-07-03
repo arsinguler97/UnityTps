@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72c9ab90ff7818447b0d0091f774b8e7, type: 3}
   m_Name: PlayerConfig
   m_EditorClassIdentifier: 
-  targetMoveSpeed: 5
+  targetMoveSpeed: 3.5
   chargingMoveSpeed: 2.5
-  runSpeed: 10
+  runSpeed: 5
   rotationSpeed: 100
   accelerationRate: 10
   decelerationRate: 15
