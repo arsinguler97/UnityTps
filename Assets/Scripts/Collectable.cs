@@ -3,6 +3,8 @@ using DG.Tweening;
 
 public class Coin : MonoBehaviour
 {
+    public int value = 1;
+
     private Tween _moveTween;
     private Tween _rotateTween;
 
@@ -24,6 +26,7 @@ public class Coin : MonoBehaviour
             _moveTween.Kill();
             _rotateTween.Kill();
 
+            ScoreManager.Instance.AddScore(value);
             Destroy(gameObject);
         }
     }

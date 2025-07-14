@@ -38,16 +38,7 @@ public class EnemyDetection : MonoBehaviour
                 if (hit.collider.CompareTag("Player"))
                 {
                     canSeePlayer = true;
-                    Debug.DrawRay(transform.position + Vector3.up, directionToPlayer * _detectionRange, Color.green);
                 }
-                else
-                {
-                    Debug.DrawRay(transform.position + Vector3.up, directionToPlayer * _detectionRange, Color.yellow);
-                }
-            }
-            else
-            {
-                Debug.DrawRay(transform.position + Vector3.up, directionToPlayer * _detectionRange, Color.red);
             }
         }
 
@@ -59,8 +50,7 @@ public class EnemyDetection : MonoBehaviour
         else if (!canSeePlayer && _playerInSight)
         {
             _playerInSight = false;
-            Vector3 lastSeen = transform.position + directionToPlayer * _detectionRange;
-            _enemyAI.HandlePlayerLost(lastSeen);
+            _enemyAI.HandlePlayerLost(_player.position);
         }
     }
 }

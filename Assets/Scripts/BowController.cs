@@ -13,14 +13,15 @@ public class BowController : MonoBehaviour
     [SerializeField] private CinemachineBrain cinemachineBrain;
     [SerializeField] private float maxOverchargeDuration = 3f;
     [SerializeField] private float aimSpreadAmount = 2f;
+    [SerializeField] private Animator _animator;
 
     private float _chargeTime;
     private bool _isCharging;
     private float _overchargeTime;
-    private Vector3 _originalCrosshairPos;
     private bool _canCharge = true;
+    private Vector3 _originalCrosshairPos;
     private PlayerMovement _player;
-    
+
     public bool IsCharging => _isCharging;
 
     private void Start()
@@ -29,22 +30,35 @@ public class BowController : MonoBehaviour
             _originalCrosshairPos = crosshairImage.rectTransform.anchoredPosition;
 
         _player = FindFirstObjectByType<PlayerMovement>();
+
+        aimCamera.Priority = 10;
+        defaultCamera.Priority = 20;
+
+        if (crosshairImage != null)
+            crosshairImage.enabled = false;
     }
 
-    void Update()
+    private void Update()
     {
-        if (Input.GetButtonDown("Fire1") && _canCharge && _player != null && _player.currentArrowCount > 0)
+        if (_player == null) return;
+
+        if (crosshairImage != null)
+            crosshairImage.enabled = _player.IsBowEquipped;
+
+        if (!_player.IsBowEquipped) return;
+
+        if (Input.GetButtonDown("Fire1") && _canCharge && _player.currentArrowCount > 0)
         {
             _isCharging = true;
             _chargeTime = 0f;
             _overchargeTime = 0f;
 
+            _animator.SetBool("IsDrawing", true);
+            _animator.ResetTrigger("TriggerFire");
+
             cinemachineBrain.DefaultBlend.Time = 3f;
             aimCamera.Priority = 20;
             defaultCamera.Priority = 10;
-
-            if (crosshairImage != null)
-                crosshairImage.enabled = true;
         }
 
         if (Input.GetButton("Fire1") && _isCharging)
@@ -65,12 +79,19 @@ public class BowController : MonoBehaviour
 
         if (Input.GetButtonUp("Fire1") && _isCharging)
         {
+            _isCharging = false;
+
+            _animator.SetBool("IsDrawing", false);
+            _animator.SetTrigger("TriggerFire");
+
             FireArrow(false);
         }
     }
 
     private void AutoFireArrow()
     {
+        _animator.SetBool("IsDrawing", false);
+        _animator.SetTrigger("TriggerFire");
         FireArrow(true);
     }
 
@@ -123,8 +144,7 @@ public class BowController : MonoBehaviour
                 arrowScript.SetInitialSpeed(finalSpeed);
             }
 
-            if (_player != null)
-                _player.currentArrowCount--;
+            _player.currentArrowCount--;
         }
     }
 

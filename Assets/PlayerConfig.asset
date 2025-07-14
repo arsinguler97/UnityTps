@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: PlayerConfig
   m_EditorClassIdentifier: 
   targetMoveSpeed: 3.5
-  chargingMoveSpeed: 2.5
+  bowMoveSpeed: 3
+  disableSprintWhileEquipped: 1
+  chargingMoveSpeed: 2
   runSpeed: 5
   rotationSpeed: 100
   accelerationRate: 10
   decelerationRate: 15
-  baseJumpForce: 10
+  baseJumpForce: 8
   maxJumpHoldTime: 0.5
   gravityMultiplier: 2
   airControlFactor: 0.5

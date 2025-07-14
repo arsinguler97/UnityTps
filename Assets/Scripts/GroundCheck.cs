@@ -21,8 +21,6 @@ public class GroundCheck : MonoBehaviour
             _verticalVelocity = 0f;
 
         _verticalVelocity += Physics.gravity.y * movementConfig.gravityMultiplier * Time.deltaTime;
-        
-        Debug.Log(_verticalVelocity);
     }
 
     public void ApplyJumpForce()
