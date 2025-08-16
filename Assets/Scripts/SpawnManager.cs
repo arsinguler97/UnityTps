@@ -71,19 +71,21 @@ public class SpawnManager : MonoBehaviour
 
         do
         {
-            Vector3 samplePos = RandomNavMeshLocation(20f);
+            Vector3 samplePos = RandomNavMeshLocation(100f);
             if (NavMesh.SamplePosition(samplePos, out NavMeshHit hit, 5f, NavMesh.AllAreas))
             {
                 spawnPos = hit.position + Vector3.up * yOffset;
+
                 if (Vector3.Distance(_player.position, spawnPos) > 50f)
                 {
-                    Instantiate(prefab, spawnPos, Quaternion.identity);
+                    GameObject obj = Instantiate(prefab, spawnPos, Quaternion.identity);
                     return;
                 }
             }
             attempts--;
         } while (attempts > 0);
     }
+
 
     private void SpawnZombieAtRandomPatrolPoint()
     {
