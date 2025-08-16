@@ -9,6 +9,7 @@ public class Landmine : MonoBehaviour
     [SerializeField] private Renderer mineRenderer;
     [SerializeField] private Material redMaterial;
     [SerializeField] private int damageAmount = 3;
+    [SerializeField] private AudioClip explosionSFX;
 
     private Material _originalMaterial;
     private bool _isTriggered;
@@ -81,6 +82,21 @@ public class Landmine : MonoBehaviour
         if (explosionVFX != null)
             Instantiate(explosionVFX, transform.position, Quaternion.identity);
 
+        PlayExplosionSound();
+
         Destroy(gameObject);
+    }
+
+    private void PlayExplosionSound()
+    {
+        if (explosionSFX == null) return;
+
+        GameObject audioObj = new GameObject("ExplosionSound");
+        AudioSource source = audioObj.AddComponent<AudioSource>();
+        source.clip = explosionSFX;
+        source.spatialBlend = 1f;
+        source.transform.position = transform.position;
+        source.Play();
+        Destroy(audioObj, explosionSFX.length);
     }
 }

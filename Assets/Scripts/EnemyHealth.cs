@@ -6,8 +6,12 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private int maxHealth = 3;
     [SerializeField] private GameObject healthBarPrefab;
 
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip zombieGroan;
+    [SerializeField] private AudioClip zombieDeath;
+
     private int _currentHealth;
-    private bool _isDead = false;
+    private bool _isDead;
 
     private Slider _healthBarSlider;
     private Transform _healthBarInstance;
@@ -19,6 +23,13 @@ public class EnemyHealth : MonoBehaviour
         _currentHealth = maxHealth;
         _animator = GetComponent<Animator>();
         _enemyAI = GetComponent<BasicEnemyAI>();
+
+        if (_audioSource != null && zombieGroan != null)
+        {
+            _audioSource.clip = zombieGroan;
+            _audioSource.loop = true;
+            _audioSource.Play();
+        }
 
         if (healthBarPrefab != null)
         {
@@ -46,6 +57,13 @@ public class EnemyHealth : MonoBehaviour
         {
             _isDead = true;
 
+            if (_audioSource != null)
+            {
+                _audioSource.Stop();
+                _audioSource.loop = false;
+                _audioSource.PlayOneShot(zombieDeath);
+            }
+
             if (_healthBarInstance != null)
                 Destroy(_healthBarInstance.gameObject);
 
@@ -54,7 +72,19 @@ public class EnemyHealth : MonoBehaviour
             if (_enemyAI != null)
                 _enemyAI.Die();
 
+            UnparentAllArrows();
             Destroy(gameObject, 3f);
+        }
+    }
+
+    private void UnparentAllArrows()
+    {
+        foreach (Transform child in transform)
+        {
+            if (child.CompareTag("Arrow"))
+            {
+                child.SetParent(null);
+            }
         }
     }
 

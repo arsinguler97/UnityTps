@@ -16,7 +16,7 @@ MonoBehaviour:
   bowMoveSpeed: 3
   disableSprintWhileEquipped: 1
   chargingMoveSpeed: 2
-  runSpeed: 5
+  runSpeed: 7
   rotationSpeed: 100
   accelerationRate: 10
   decelerationRate: 15

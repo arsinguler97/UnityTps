@@ -8,9 +8,18 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/AnimationTest.unity
     guid: c585d3c70f705a24e8f236a79b98b444
+  - enabled: 1
+    path: Assets/AngeloMaN87/Prototype Map/Scenes/MainMenu.unity
+    guid: cb8dfd3477a78e74aa46f0e6b6ed5479
+  - enabled: 1
+    path: Assets/AngeloMaN87/Prototype Map/Scenes/GameScene.unity
+    guid: 03ed3121c080d904885ea5bc4c0cfcf3
+  - enabled: 1
+    path: Assets/AngeloMaN87/Prototype Map/Scenes/GameOverMenu.unity
+    guid: 4bcf67bdfb9197945895f755bb8c1c96
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

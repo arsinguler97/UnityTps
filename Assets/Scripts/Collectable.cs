@@ -4,6 +4,7 @@ using DG.Tweening;
 public class Coin : MonoBehaviour
 {
     public int value = 1;
+    [SerializeField] private AudioClip collectSound;
 
     private Tween _moveTween;
     private Tween _rotateTween;
@@ -21,13 +22,27 @@ public class Coin : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            _moveTween.Kill();
-            _rotateTween.Kill();
+        if (!other.CompareTag("Player")) return;
 
-            ScoreManager.Instance.AddScore(value);
-            Destroy(gameObject);
-        }
+        _moveTween.Kill();
+        _rotateTween.Kill();
+
+        PlayCollectSound();
+
+        ScoreManager.Instance.AddScore(value);
+        Destroy(gameObject);
+    }
+
+    private void PlayCollectSound()
+    {
+        if (collectSound == null) return;
+
+        GameObject audioObj = new GameObject("CoinCollectSound");
+        AudioSource src = audioObj.AddComponent<AudioSource>();
+        src.clip = collectSound;
+        src.spatialBlend = 1f;
+        src.transform.position = transform.position;
+        src.Play();
+        Destroy(audioObj, collectSound.length);
     }
 }

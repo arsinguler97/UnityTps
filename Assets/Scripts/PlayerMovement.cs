@@ -13,14 +13,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float pickupRange = 2f;
     [SerializeField] private KeyCode pickupKey = KeyCode.E;
     [SerializeField] public int maxArrowInventory = 20;
-
     [SerializeField] private GameObject bowObject;
     [SerializeField] private Transform bowBackSlot;
     [SerializeField] private Transform bowHandSlot;
     [SerializeField] private Transform bowInHandPose;
     [SerializeField] private Transform bowOnBackPose;
     [SerializeField] private Transform spineBone;
-    
+
     public PlayerMovementConfig movementConfig;
     public GroundCheck groundCheck;
     public Transform cameraHolder;
@@ -30,10 +29,8 @@ public class PlayerMovement : MonoBehaviour
     private float _cameraPitch;
     private BowController _bowController;
     private float _jumpTimer;
-
     private bool _isBowEquipped = false;
     public bool IsBowEquipped => _isBowEquipped;
-
     public int currentArrowCount = 10;
     private Collider[] _pickupHits = new Collider[10];
 
@@ -52,6 +49,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (PauseMenu.GameIsPaused) return;
+
         bool isGrounded = groundCheck.IsGrounded;
         _animator.SetBool(IsJumpingAnimation, !isGrounded);
         _animator.SetFloat(VerticalVelocityAnimation, groundCheck.VerticalVelocity);
@@ -77,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
             ToggleBow();
         }
     }
-    
+
     private void LateUpdate()
     {
         if (_bowController != null && _bowController.IsCharging && spineBone != null)
@@ -92,6 +91,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleLook()
     {
+        if (PauseMenu.GameIsPaused) return;
+
         float mouseX = Input.GetAxis("Mouse X") * movementConfig.lookSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * movementConfig.lookSensitivity;
 
@@ -173,7 +174,7 @@ public class PlayerMovement : MonoBehaviour
 
         StartCoroutine(SwitchBowAfterDelay());
     }
-    
+
     private IEnumerator SwitchBowAfterDelay()
     {
         yield return new WaitForSeconds(0.5f);

@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Arrow
   - Obstacle
+  - Mine
+  - Coin
   layers:
   - Default
   - TransparentFX

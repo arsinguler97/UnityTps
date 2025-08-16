@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1cf9fc7dc6460b64db92d7c3ebf69b30, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.98895574
+      value: -939.5684
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1cf9fc7dc6460b64db92d7c3ebf69b30, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8499999
+      value: -555.99506
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1cf9fc7dc6460b64db92d7c3ebf69b30, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.49
+      value: 26.539474
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1cf9fc7dc6460b64db92d7c3ebf69b30, type: 3}
       propertyPath: m_LocalRotation.w
@@ -38,7 +38,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1cf9fc7dc6460b64db92d7c3ebf69b30, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1cf9fc7dc6460b64db92d7c3ebf69b30, type: 3}
       propertyPath: m_LocalRotation.y
@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Landmine
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1cf9fc7dc6460b64db92d7c3ebf69b30, type: 3}
+      propertyPath: m_TagString
+      value: Mine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -75,7 +79,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1cf9fc7dc6460b64db92d7c3ebf69b30, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7017435948146385007}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1cf9fc7dc6460b64db92d7c3ebf69b30, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 486653712656044530}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1cf9fc7dc6460b64db92d7c3ebf69b30, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6372930866997458310}
   m_SourcePrefab: {fileID: 100100000, guid: 1cf9fc7dc6460b64db92d7c3ebf69b30, type: 3}
+--- !u!23 &3168973651329556162 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 1cf9fc7dc6460b64db92d7c3ebf69b30, type: 3}
+  m_PrefabInstance: {fileID: 4340310189777388102}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3529283679576506135 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1cf9fc7dc6460b64db92d7c3ebf69b30, type: 3}
@@ -102,3 +117,43 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 20, y: 10, z: 20}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &486653712656044530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3529283679576506135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e9be0fcb7ee1d84f90419c639cdb598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explodeDelay: 3
+  explosionVFX: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
+  mineRenderer: {fileID: 3168973651329556162}
+  redMaterial: {fileID: 2100000, guid: f7c0c49c60afa6b4a8961eaddc480dc1, type: 2}
+  damageAmount: 3
+  explosionSFX: {fileID: 8300000, guid: ff44a6a2df097e8499f5ad59d8ad9b51, type: 3}
+--- !u!64 &6372930866997458310
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3529283679576506135}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -530131240172089429, guid: 1cf9fc7dc6460b64db92d7c3ebf69b30, type: 3}

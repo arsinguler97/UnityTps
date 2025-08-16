@@ -12,14 +12,14 @@ public class BasicEnemyAI : MonoBehaviour
     [SerializeField] private float _chaseSpeed = 4f;
     [SerializeField] private float _suspiciousDuration = 5f;
 
-    private int _currentWaypointIndex = 0;
+    private int _currentWaypointIndex;
     private float _idleTimer;
     private float _suspiciousTimer;
     private NavMeshAgent _agent;
     private Transform _player;
     private Vector3 _lastKnownPlayerPosition;
     private Animator _animator;
-    private bool _isDead = false;
+    private bool _isDead;
     private EnemyAIState _previousState;
 
     private void Start()
@@ -27,6 +27,12 @@ public class BasicEnemyAI : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
         ChangeState(EnemyAIState.Idle);
+    }
+    
+    public void SetPatrolPoints(Transform[] points)
+    {
+        _patrolWaypoints = points;
+        _currentWaypointIndex = 0;
     }
 
     private void Update()
@@ -92,7 +98,14 @@ public class BasicEnemyAI : MonoBehaviour
 
         if (!_agent.pathPending && _agent.remainingDistance <= _agent.stoppingDistance)
         {
-            _currentWaypointIndex = (_currentWaypointIndex + 1) % _patrolWaypoints.Length;
+            int nextIndex;
+            do
+            {
+                nextIndex = Random.Range(0, _patrolWaypoints.Length);
+            } while (nextIndex == _currentWaypointIndex);
+
+            _currentWaypointIndex = nextIndex;
+
             ChangeState(EnemyAIState.Idle);
         }
     }

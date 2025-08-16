@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: aeeb597eb45214e418678b9d600a3e6c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.051772
+      value: -1.4785894
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: aeeb597eb45214e418678b9d600a3e6c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.611
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: aeeb597eb45214e418678b9d600a3e6c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.672567
+      value: 3.6356862
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: aeeb597eb45214e418678b9d600a3e6c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -67,6 +67,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: aeeb597eb45214e418678b9d600a3e6c, type: 3}
       propertyPath: m_Name
       value: coin
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aeeb597eb45214e418678b9d600a3e6c, type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -118,3 +122,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 5
+  collectSound: {fileID: 8300000, guid: 1759cd868f70db247ac46288f910f804, type: 3}
